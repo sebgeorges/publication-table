@@ -1,0 +1,94 @@
+    .pubtable-header{
+    	background-color: black;
+        }
+        
+
+   .pubtable-header > a:link,.pubtable-header > a:visited, .pubtable-header > a:hover{
+   		color: white;
+   		text-align: center;
+  
+   }
+
+   #pubsearch{
+   		margin-bottom: 20px;
+   }
+
+.publication-table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+
+input.search-field{
+    border:solid 1px;
+    border-radius: 3px;
+    margin-top: 20px;
+    width:100px;
+    height: 30px;
+    transition: width 0.5s ease-out;
+    -moz-transition: width 0.5s ease-out;
+    -webkit-transition: width 0.5s ease-out;
+    
+}
+
+input.search-field:focus{
+    width:80%;
+    transition: width 0.5s ease-out;
+    -moz-transition: width 0.5s ease-out;
+    -webkit-transition: width 0.5s ease-out;
+    
+}
+
+.submit-btn{
+    border:solid 0.5px rgb(239,240,242);
+    border-radius: 3px;
+    padding: 5px;
+    cursor:pointer;
+    box-shadow: 1px 1px 1px ;
+    background-color: rgb(239,240,242);
+    margin-bottom:10px;
+}
+
+.submit-btn:hover{
+    background-color: #f6f6f6;
+}
+
+.submit-btn:active{
+    box-shadow: 0.5px 0.5px 1px ;
+    transform: translateY(1px);
+}
+
+.search-group{
+    padding: 20px;
+    padding-bottom: 5px;
+    background-color: deeppink;
+    border-radius: 5px;
+    color: white;
+    margin: 10px 0px 10px 0px;
+    
+}
+.search-group img{
+    height:30px;
+    vertical-align: middle;
+    margin-left:10px;
+}
+
+.search-group label{
+    font-size: 20px;
+}
+
+.filters div{
+   margin-right:20px;
+    display: inline-block;
+}
+
+div.message{
+    background-color: rgb(0,115,170);
+    color:white;
+    padding:20px;
+    font-size:20px;
+    text-align: center;
+    border-radius:5px;
+    margin:5px;
+}
