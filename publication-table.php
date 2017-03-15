@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 function pt_plugin_ressources() {
 
   wp_enqueue_style('ptcss', plugins_url('/css/style.css',__FILE__));
-  wp_enqueue_script( 'jqueryforme', plugins_url( '/js/jquery.js', __FILE__ ), array('jquery'));
+//  wp_enqueue_script( 'jqueryforme', plugins_url( '/js/jquery.js', __FILE__ ), array('jquery'));
   wp_enqueue_script( 'customjavascript', plugins_url( '/js/pt.js', __FILE__ ), array('jquery'));
   
 }
@@ -59,6 +59,7 @@ function table_customise_register($wp_customize){
 		));	
         $wp_customize-> add_setting('even_color',array(		
                     'transport'=>'postMessage',
+                    'default'=> '#dbdbdb'
 
             ));
         $wp_customize-> add_setting('header_text_color',array(	
@@ -412,7 +413,7 @@ if($loop1->have_posts()) : $loop1->the_post();
       }
       
       $output .= '<th class="pubtable-header"><a href="';
-      $output .= get_permalink(30);
+//      $output .= get_permalink(30);
       $output .= "?sort=".urlencode($field['name']);
       $output .= "\">";
       $output .= $field['label'];
