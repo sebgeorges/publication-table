@@ -250,8 +250,21 @@ $term_array = wp_get_object_terms($post->ID,'table_taxonomies');
     
     //Authors cell
     
-  $output .=  "<td>". get_field('publication_authors'). "</td>";
+   $people = get_field('publication_authors');
+    $author_list = '';
+if($people){
+    foreach ($people as $dude){
+       $author_list .=  '<a href="'.$dude->guid.'">'.$dude->post_title.'</a>'.', ';
+   }
+    $clean_authors = trim($author_list,', ');
+}
+ $ext_authors = '';
+if (get_field('external_authors')){
+    $ext_authors = ', '.get_field('external_authors');
+}
     
+   $output .=  "<td>".$clean_authors.$ext_authors;
+
     // Publication date cell
     
   $output .=  "<td>";
@@ -408,7 +421,7 @@ if($loop1->have_posts()) : $loop1->the_post();
   if ($fields){ //testing that we have custom fields
     foreach( $fields as $field_name => $field ){
 
-      if (($field['name'] == 'file_attachement') || ($field['name'] == '') ) {  // we skip the file attachement custom field using continue
+      if (($field['name'] == 'file_attachement') || ($field['name'] == '') || ($field['name'] == 'external_authors')) {  // we skip the file attachement custom field using continue
         continue;
       }
       
@@ -613,19 +626,33 @@ if(function_exists("register_field_group"))
       ),
       array (
         'key' => 'field_58525faf16c54',
-        'label' => 'Publication Authors',
-        'name' => 'publication_authors',
-        'order_no' => 2,
-        'type' => 'text',
-        'instructions' => 'Please enter the Authors\' name in the same order as they appear on the publication',
-        'required' => 1,
-        'default_value' => '',
-        'placeholder' => '',
-        'prepend' => '',
-        'append' => '',
-        'formatting' => 'none',
-        'maxlength' => 150,
+'label' => 'Publication Authors',
+				'name' => 'publication_authors',
+				'type' => 'post_object',
+                'order_no' => 2,
+				'instructions' => 'Select the authors of the paper by holding the "Ctrl" key and clicking on the author names. These are the authors belonging to the project. To add authors external to the project enter their name in the External Author field.',
+				'required' => 1,
+				'post_type' => array (
+					0 => 'people',
+				),
+				'taxonomy' => array (
+					0 => 'all',
+				),
+				'allow_null' => 1,
+				'multiple' => 1,
       ),
+        array (
+				'key' => 'field_58c4232cac6d2',
+				'label' => 'External Authors',
+				'name' => 'external_authors',
+				'type' => 'text',
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => 30,
+			),
       array (
         'key' => 'field_585277e6752c5',
         'label' => 'Publication date',
